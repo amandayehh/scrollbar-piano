@@ -1,5 +1,14 @@
 import React from "react"
 
-export default function Home() {
-  return <div>Hello world!</div>
+import Piano from "../components/piano/piano"
+
+import "../css/global.css"
+
+function Index(props) {
+  return (
+    <div className="index">
+      <Piano />
+    </div>
+  )
 }
+export default Index

@@ -15,8 +15,14 @@
   },
   "dependencies": {
     "gatsby": "^2.24.26",
+    "gsap": "^3.5.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-easy-panzoom": "^0.4.4",
+    "react-gsap": "^2.2.1",
+    "react-responsive-pinch-zoom-pan": "^0.3.0",
+    "react-zoom-pan-pinch": "^1.6.1",
+    "tone": "^14.7.58"
   },
   "devDependencies": {
     "prettier": "2.0.5"
