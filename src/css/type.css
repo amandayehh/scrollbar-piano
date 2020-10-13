@@ -3,6 +3,8 @@
   src: url("../typefaces/VTFMisterPixel-Tools.woff2") format("woff2");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
 @media only screen and (max-width: 600px) {
   h1 {
     font-family: "tools";
@@ -11,5 +13,11 @@
     line-height: 70%;
     font-weight: 400;
     text-align: left;
+  }
+
+  p {
+    font-family: "Work Sans", sans-serif;
+    font-size: 1em;
+    line-height: 140%;
   }
 }
