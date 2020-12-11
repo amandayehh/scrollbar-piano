@@ -49,7 +49,7 @@ body {
 
 .piano__allkeys {
   transform: translateX(-2px);
-  height: 3800px;
+  height: 4000px;
 }
 
 .piano__whitekey {

@@ -1,6 +1,5 @@
 {
-  "name": "scrollbar-piano",
-  "private": true,
+  "name": "scrollbar-piano",  "private": false,
   "description": "A piano you can play with your scrollbar",
   "version": "0.1.0",
   "license": "0BSD",
