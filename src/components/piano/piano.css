@@ -25,11 +25,11 @@ body {
 
 .jump {
   color: #FF4D00;
-  opacity: 100%;
+  opacity: 1;
 }
 
 .fade {
-  opacity: 0%;
+  opacity: 0;
 }
 
 @keyframes jump {
