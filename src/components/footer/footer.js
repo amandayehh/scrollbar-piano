@@ -18,7 +18,6 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <div className="footer__icon">5</div>
         <p className="footer__note">
           Generating music using{" "}
           <a href="https://tonejs.github.io/" target="_blank">
@@ -26,22 +25,28 @@ class Footer extends Component {
           </a>
         </p>
         <p className="footer__note">
-          Using the beautiful pixel typeface{" "}
-          <a href="http://velvetyne.fr/fonts/mr-pixel/" target="_blank">
-            Mister Pixel
+          Creating scroll animations using {" "}
+          <a href="https://greensock.com/scrolltrigger/" target="_blank">
+            GSAP
           </a>
-          , developed by Christophe Badani and distributed by Velvetyne Foundry
+        </p>
+        <p className="footer__note">
+          Using Typeface {" "}
+          <a href="http://velvetyne.fr/fonts/solide-mirage/" target="_blank">
+            Solide Mirage
+          </a>
+          , developed by Jérémy Landes, with some contributions by Walid Bouchouchi, and distributed by Velvetyne Foundry
         </p>
 
         <p className="footer__note">
           Hosting open-source code on{" "}
-          <a href="http://velvetyne.fr/fonts/mr-pixel/" target="_blank">
+          <a href="https://github.com/amandayehh/scrollbar-piano/" target="_blank">
             Github
           </a>
         </p>
         <p className="footer__note">
           2020 ©{" "}
-          <a href="http://velvetyne.fr/fonts/mr-pixel/" target="_blank">
+          <a href="https://amandayeh.com/" target="_blank">
             Amanda Yeh
           </a>
         </p>

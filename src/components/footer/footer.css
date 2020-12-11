@@ -1,30 +1,26 @@
-@media only screen and (max-width: 600px) {
-  footer {
-    color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .footer__icon {
-    font-family: "tools";
-    font-size: 4em;
-  }
-
-  .footer__note {
-    margin-top: 1em;
-  }
-
-  .footer__note a {
-    font-weight: black;
-    color: #2c303d;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #99ceff;
-    transition-duration: 0.2s;
-  }
-
-  .footer__note a:hover {
-    color: rgba(205, 231, 255, 0.6);
-    -webkit-text-stroke-color: white;
-    text-shadow: 0px 0px 10px #99ceff;
-  }
+footer {
+  color: black;
+  padding: 20px;
+  margin-bottom: 20px;
 }
+
+
+.footer__note {
+  margin-top: 1em;
+}
+
+.footer__note a {
+  font-weight: black;
+  color: #42FFC6;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #9AA4FF;
+}
+
+.footer__note a:hover {
+  color: transparent;
+
+  -webkit-text-stroke-color: black;
+
+}
+
+@media only screen and (max-width: 600px) {}

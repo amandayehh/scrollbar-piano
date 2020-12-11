@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Link } from "gatsby"
-import { PanZoom } from "react-easy-panzoom"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import * as Tone from "tone"
@@ -10,10 +9,6 @@ import "../../css/global.css"
 import "../../css/reset.css"
 import "../../css/type.css"
 
-import backgroundNoise from "../../images/noise-gradient.png"
-
-import whiteKey from "../../images/white-key.png"
-
 class Piano extends Component {
   constructor(props) {
     super(props)
@@ -22,8 +17,16 @@ class Piano extends Component {
     this.synthsOnBack = []
     this.synthsOnEnterBlack = []
     this.synthsOnBackBlack = []
-
+    this.numOfKeys = 0
     this.whiteKeys = [
+      "b6",
+      "a6",
+      "g6",
+      "f6",
+      "e6",
+      "d6",
+      "c6",
+
       "b5",
       "a5",
       "g5",
@@ -31,6 +34,7 @@ class Piano extends Component {
       "e5",
       "d5",
       "c5",
+
       "b4",
       "a4",
       "g4",
@@ -38,9 +42,42 @@ class Piano extends Component {
       "e4",
       "d4",
       "c4",
+
+      "b3",
+      "a3",
+      "g3",
+      "f3",
+      "e3",
+      "d3",
+      "c3",
+
+      "b2",
+      "a2",
+      "g2",
+      "f2",
+      "e2",
+      "d2",
+      "c2",
+
+      "b1",
+      "a1",
+      "g1",
+      "f1",
+      "e1",
+      "d1",
+      "c1",
+
+      "b0",
+      "a1",
     ]
 
     this.blackKeys = [
+      "A#6",
+      "G#6",
+      "F#6",
+      "D#6",
+      "C#6",
+
       "A#5",
       "G#5",
       "F#5",
@@ -51,11 +88,30 @@ class Piano extends Component {
       "F#4",
       "D#4",
       "C#4",
+      "A#3",
+      "G#3",
+      "F#3",
+      "D#3",
+      "C#3",
+      "A#2",
+      "G#2",
+      "F#2",
+      "D#2",
+      "C#2",
+      "A#1",
+      "G#1",
+      "F#1",
+      "D#1",
+      "C#1",
+      "A#0",
+
     ]
   }
   componentDidMount() {
     gsap.registerPlugin(ScrollTrigger)
-
+    this.numOfKeys = 44;
+    console.log(this.blackKeys.length + this.whiteKeys.length)
+    console.log(document.getElementsByClassName("piano__whitekey__key").length + document.getElementsByClassName("piano__blackkey__key").length)
     let allWhite = document.getElementsByClassName("piano__whitekey__key")
     for (let i = 0; i < allWhite.length; i++) {
       allWhite[i].id = i
@@ -114,7 +170,7 @@ class Piano extends Component {
 
   playNoteOnEnter(i) {
     // console.log(this.synths)
-    console.log(i.trigger.id)
+    // console.log(i.trigger.id)
     this.synthsOnEnter[i.trigger.id].triggerAttackRelease(
       this.whiteKeys[i.trigger.id],
       "8n"
@@ -134,38 +190,41 @@ class Piano extends Component {
 
   playNoteOnEnterBlack(i) {
     console.log(i.trigger)
-    this.synthsOnBackBlack[i.trigger.id - 14].triggerAttackRelease(
-      this.blackKeys[i.trigger.id - 14],
+    this.synthsOnBackBlack[i.trigger.id - this.numOfKeys].triggerAttackRelease(
+      this.blackKeys[i.trigger.id - this.numOfKeys],
       "8n"
     )
   }
 
   playNoteOnBackBlack(i) {
     console.log(i.trigger)
-    console.log(this.synthsOnEnterBlack[i.trigger.id - 14])
-    this.synthsOnEnterBlack[i.trigger.id - 14].triggerAttackRelease(
-      this.blackKeys[i.trigger.id - 14],
+    console.log(this.synthsOnEnterBlack[i.trigger.id - this.numOfKeys])
+    this.synthsOnEnterBlack[i.trigger.id - this.numOfKeys].triggerAttackRelease(
+      this.blackKeys[i.trigger.id - this.numOfKeys],
       "8n"
     )
   }
 
   handleClick() {
     Tone.start()
+    document.getElementsByClassName("piano__top__start__inactive")[0].classList.remove('jump');
+    document.getElementsByClassName("piano__top__start__inactive")[0].classList.add('fade');
+
     // console.log(document.getElementsByClassName("piano__hero__play")[0])
-    document
-      .getElementsByClassName("piano__hero__play")[0]
-      .classList.add("fadeOut")
+    // document
+    //   .getElementsByClassName("piano__hero__play")[0]
+    //   .classList.add("fadeOut")
 
-    document.getElementsByClassName("piano__hero__arrow")[0].style.opacity =
-      "100"
+    // document.getElementsByClassName("piano__hero__arrow")[0].style.opacity =
+    //   "100"
 
-    document.getElementsByTagName("body")[0].style.overflowX = "scroll"
-    document.getElementsByTagName("body")[0].style.overflowY = "scroll"
+    // document.getElementsByTagName("body")[0].style.overflowX = "scroll"
+    // document.getElementsByTagName("body")[0].style.overflowY = "scroll"
     document.getElementsByTagName("body")[0].style.position = "relative"
 
-    document.getElementsByTagName("body")[0].style.height = "auto"
+    // document.getElementsByTagName("body")[0].style.height = "auto"
 
-    document.getElementsByClassName("piano__cover")[0].style.opacity = "0"
+    // document.getElementsByClassName("piano__cover")[0].style.opacity = "0"
   }
 
   // releaseNote() {
@@ -175,11 +234,15 @@ class Piano extends Component {
   render() {
     return (
       <div className="piano">
-        <div className="piano__cover"></div>
+        {/* <div className="piano__cover"></div> */}
+        <div className="piano__top">
+          <h3>Scrollbar Piano</h3>
 
+          <h3 className="piano__top__start__inactive jump" onMouseDown={() => this.handleClick()}>Start</h3>
+        </div>
         {/* <PanZoom zoomSpeed={0}> */}
         {/* <div className="piano__background-gradient"></div> */}
-        <header className="piano__hero">
+        {/* <header className="piano__hero">
           <h1 className="piano__hero__title">scrollbar piano</h1>
           <div className="piano__hero__buttons">
             <h1
@@ -249,9 +312,17 @@ class Piano extends Component {
               </defs>
             </svg>
           </div>
-        </header>
+        </header> */}
         <main className="piano__allkeys">
           <div className="piano__whitekey">
+            <div className="piano__whitekey__key piano__b6"></div>
+            <div className="2 piano__whitekey__key piano__a6 "></div>
+            <div className="3 piano__whitekey__key piano__g6"></div>
+            <div className="4 piano__whitekey__key piano__f6"></div>
+            <div className="5 piano__whitekey__key piano__e6"></div>
+            <div className="6 piano__whitekey__key piano__d6"></div>
+            <div className="7 piano__whitekey__key piano__c6"></div>
+
             <div className="piano__whitekey__key piano__b5"></div>
             <div className="2 piano__whitekey__key piano__a5 "></div>
             <div className="3 piano__whitekey__key piano__g5"></div>
@@ -266,8 +337,45 @@ class Piano extends Component {
             <div className="12 piano__whitekey__key piano__e4"></div>
             <div className="13 piano__whitekey__key piano__d4"></div>
             <div className="14 piano__whitekey__key piano__c4"></div>
+
+            <div className="8 piano__whitekey__key piano__b3"></div>
+            <div className="9 piano__whitekey__key piano__a3"></div>
+            <div className="10 piano__whitekey__key piano__g3"></div>
+            <div className="11 piano__whitekey__key piano__f3"></div>
+            <div className="12 piano__whitekey__key piano__e3"></div>
+            <div className="13 piano__whitekey__key piano__d3"></div>
+            <div className="14 piano__whitekey__key piano__c3"></div>
+
+            <div className="8 piano__whitekey__key piano__b2"></div>
+            <div className="9 piano__whitekey__key piano__a2"></div>
+            <div className="10 piano__whitekey__key piano__g2"></div>
+            <div className="11 piano__whitekey__key piano__f2"></div>
+            <div className="12 piano__whitekey__key piano__e2"></div>
+            <div className="13 piano__whitekey__key piano__d2"></div>
+            <div className="14 piano__whitekey__key piano__c2"></div>
+
+            <div className="8 piano__whitekey__key piano__b1"></div>
+            <div className="9 piano__whitekey__key piano__a1"></div>
+            <div className="10 piano__whitekey__key piano__g1"></div>
+            <div className="11 piano__whitekey__key piano__f1"></div>
+            <div className="12 piano__whitekey__key piano__e1"></div>
+            <div className="13 piano__whitekey__key piano__d1"></div>
+            <div className="14 piano__whitekey__key piano__c1"></div>
+
+            <div className="14 piano__whitekey__key piano__b0"></div>
+            <div className="14 piano__whitekey__key piano__a0"></div>
+
+
           </div>
           <div className="piano__blackkey">
+            <div className="piano__blackkey__key piano__58"></div>
+            <div className="piano__blackkey__key piano__56"></div>
+            <div className="piano__blackkey__key piano__54"></div>
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__51"></div>
+            <div className="piano__blackkey__key piano__49"></div>
+
+            <div className="piano__blackkey__key-none piano__"></div>
             <div className="piano__blackkey__key piano__82"></div>
             <div className="piano__blackkey__key piano__80"></div>
             <div className="piano__blackkey__key piano__78"></div>
@@ -281,6 +389,34 @@ class Piano extends Component {
             <div className="piano__blackkey__key-none piano__"></div>
             <div className="piano__blackkey__key piano__63"></div>
             <div className="piano__blackkey__key piano__61"></div>
+
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__58"></div>
+            <div className="piano__blackkey__key piano__56"></div>
+            <div className="piano__blackkey__key piano__54"></div>
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__51"></div>
+            <div className="piano__blackkey__key piano__49"></div>
+
+
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__46"></div>
+            <div className="piano__blackkey__key piano__44"></div>
+            <div className="piano__blackkey__key piano__42"></div>
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__39"></div>
+            <div className="piano__blackkey__key piano__37"></div>
+
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__34"></div>
+            <div className="piano__blackkey__key piano__32"></div>
+            <div className="piano__blackkey__key piano__30"></div>
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__27"></div>
+            <div className="piano__blackkey__key piano__25"></div>
+
+            <div className="piano__blackkey__key-none piano__"></div>
+            <div className="piano__blackkey__key piano__22"></div>
           </div>
         </main>
       </div>

@@ -1,23 +1,17 @@
 @font-face {
-  font-family: "tools";
-  src: url("../typefaces/VTFMisterPixel-Tools.woff2") format("woff2");
+  font-family: "Solide Mirage";
+  src: url("../typefaces/Solide_Mirage-Etroit_web.woff2") format("woff2");
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-family: "tools";
-    font-size: 6em;
-    font-style: normal;
-    line-height: 70%;
-    font-weight: 400;
-    text-align: left;
-  }
+body {
+  font-family: "Solide Mirage", serif;
+}
 
-  p {
-    font-family: "Work Sans", sans-serif;
-    font-size: 1em;
-    line-height: 140%;
-  }
+h3 {
+  font-size: 25px;
+}
+
+p {
+  line-height: 140%;
 }

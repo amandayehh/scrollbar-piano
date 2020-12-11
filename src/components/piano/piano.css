@@ -1,124 +1,113 @@
 body {
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow: scroll;
   position: fixed;
-  height: 100%;
+
+
 }
 
-@media only screen and (max-width: 600px) {
-  .piano__hero {
-    position: relative;
-    margin: 20px;
-    margin-bottom: 60px;
-    z-index: 2;
+.piano {
+  background: linear-gradient(90deg, #FFF9BF 0%, #DCFDD8 62.46%, #FCFF5E 69.23%, #D4FEDE 77.05%, #C7FFE7 100%);
+
+}
+
+.piano__top {
+  height: 65vh;
+  padding: 20px;
+}
+
+.piano__top__start__inactive {
+  margin-top: 50vh;
+  color: black;
+  transition-duration: 0.4s;
+  animation: jump 1.6s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.jump {
+  color: #FF4D00;
+  opacity: 100%;
+}
+
+.fade {
+  opacity: 0%;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(-8px);
   }
 
-  .piano__cover {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(180deg, rgba(44, 48, 61, 0) 0%, #2c303d 100%);
-    z-index: 1;
-    transition-duration: 1s;
+  50% {
+    transform: translateY(8px);
+
   }
 
-  .piano__hero__title {
-    color: rgba(205, 231, 255, 0.6);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-    text-shadow: 0px 0px 22.8325px #99ceff;
+  100% {
+    transform: translateY(-8px);
   }
+}
 
-  .piano__hero__buttons {
-    padding-top: 170px;
-    height: 15vh;
-  }
+.piano__allkeys {
+  transform: translateX(-2px);
+  height: 3800px;
+}
 
-  .piano__hero__play {
-    position: absolute;
-    right: 15px;
-    margin-top: 10px;
-    text-align: right;
-    background-color: none;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #ffa89c;
-    color: #2c303d;
-    transition: 0.2s;
-    z-index: 1;
-  }
+.piano__whitekey {
+  position: absolute;
+}
 
-  .piano__hero__arrow {
-    position: absolute;
-    right: 20px;
-    opacity: 0;
-    transition: 1s;
-  }
+.piano__whitekey__key {
+  width: 260px;
+  height: 80px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 0px 10px 10px 0px;
+  transition-duration: 0.2s;
+}
 
-  .piano__hero__play:hover {
-    color: rgba(255, 168, 156, 0.6);
-    text-shadow: 0px 4px 30px #ffa89c;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-  }
+.piano__blackkey {
+  position: absolute;
+  margin-top: 55px;
 
-  .piano__allkeys {
-    transform: translateX(-2px);
-    height: 1300px;
-  }
+}
 
-  .piano__whitekey {
-    position: absolute;
-  }
+.piano__blackkey__key {
+  width: 160px;
+  height: 60px;
+  background: #9AA4FF;
+  border: 1px solid #000000;
+  border-radius: 0px 10px 10px 0px;
+  margin-bottom: 20px;
+  transition-duration: 0.2s;
 
-  .piano__whitekey__key {
-    width: 260px;
-    height: 80px;
-    background: rgba(205, 231, 255, 0.6);
-    border: 1px solid #ffffff;
-    box-shadow: inset 0px 0px 21.6981px #99ceff;
-    border-radius: 0px 5px 4.33962px 0px;
-  }
 
-  .piano__blackkey {
-    position: absolute;
-    margin-top: 55px;
-  }
+}
 
-  .piano__blackkey__key {
-    width: 160px;
-    height: 60px;
-    background: #2c303d;
-    border: 0.433962px solid #ff806f;
-    box-shadow: inset 0px 0px 17.3585px #ff624d;
-    border-radius: 0px 5px 5px 0px;
-    margin-bottom: 20px;
-  }
+.piano__blackkey__key-none {
+  width: 160px;
+  height: 60px;
 
-  .piano__blackkey__key-none {
-    width: 160px;
-    height: 60px;
-    background: #2c303d;
-    opacity: 0;
-    border: 0.433962px solid #ff806f;
-    box-shadow: inset 0px 0px 17.3585px #ff624d;
-    border-radius: 0px 5px 5px 0px;
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+}
 
-  .active-white {
-    background: #cde7ff;
-    border: 1px solid #ffffff;
-    box-shadow: 0px 0px 50px #99ceff;
-  }
+.active-white {
+  margin-left: 30px;
+  background: #42FFC6
+}
 
-  .active-black {
-    background: #ffb2b2;
-    border: 1px solid #ffa196;
-    box-shadow: inset 0px 0px 50px #ff806f;
-  }
+.active-black {
+  margin-left: 50px;
+  background: #262E77;
 
-  .fadeOut {
-    opacity: 0;
-    transition-duration: 0.2s;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition-duration: 0.2s;
+}
+
+@media only screen and (min-width: 600px) {
+  .piano__top {
+    padding: 50px;
   }
 }
